@@ -11,3 +11,5 @@ PATH=$PATH:/home/bakar/repos/alacritty/target/release
 export PATH
 
 alias gs="git status"
+
+export EDITOR=vim
