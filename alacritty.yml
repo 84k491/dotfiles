@@ -579,7 +579,7 @@ schemes:
 # *SolarizedDark
 # *TomorrowNight
 
-colors: *SolarizedLight
+colors: *GruvboxDark
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
@@ -609,7 +609,7 @@ colors: *SolarizedLight
 bell:
   animation: Linear
   duration: 100
-  color: '#ffffff'
+  color: '#000000'
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
