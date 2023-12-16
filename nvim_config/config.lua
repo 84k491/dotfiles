@@ -295,14 +295,8 @@ local opts = {silent = true, nowait = true}
 
 vim.keymap.set('n', '<leader>o', ':CocOutline<CR>')
 
--- vim.keymap.set('n', '<C-k>', ':tab split<CR>')
--- vim.keymap.set('n', '<C-l>', ':tabn<CR>')
--- vim.keymap.set('n', '<C-h>', ':tabp<CR>')
--- vim.keymap.set('n', '<C-x>', ':q<CR>')
 vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts)
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>', opts)
--- vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>', opts)
--- vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>', opts)
 vim.keymap.set('n', '<C-x>', '<Cmd>BufferClose<CR>', opts)
 
 

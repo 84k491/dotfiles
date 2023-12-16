@@ -14,13 +14,14 @@ return require('packer').startup(function(use)
     }
 
     use {
-      'phaazon/hop.nvim',
-      branch = 'v2', -- optional but strongly recommended
-      config = function()
+        'smoka7/hop.nvim',
+        tag = '*', -- optional but strongly recommended
+        config = function()
         -- you can configure Hop the way you like here; see :h hop-config
         require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      end
+        end
     }
+    use { 'tpope/vim-surround' }
 
     use 'lewis6991/gitsigns.nvim'
 
@@ -43,5 +44,7 @@ return require('packer').startup(function(use)
           -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
       }
+
+    use 'Exafunction/codeium.vim'
 
 end)
