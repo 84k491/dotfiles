@@ -1,7 +1,6 @@
 local opt = vim.opt
 opt.cursorline = true
 opt.relativenumber = true
--- opt.scrolloff=0
 opt.tabstop=4
 opt.shiftwidth=4
 opt.expandtab = true
@@ -9,14 +8,13 @@ opt.expandtab = true
 opt.cindent = false
 opt.smartindent = false
 opt.autoindent = false
--- opt.indentexpr=""
 
 opt.formatoptions=""
 opt.showcmd = true
 opt.updatetime=50
 opt.signcolumn = 'yes'
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-vim.cmd([[filetype indent off]])
+vim.cmd('filetype plugin indent off')
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd[[
@@ -27,6 +25,28 @@ vim.cmd[[
 ]]
 
 require('plugins')
+require('Comment').setup({
+    toggler = {
+        ---Line-comment toggle keymap
+        line = 'cc',
+        ---Block-comment toggle keymap
+        block = 'gbc',
+    },
+    opleader = {
+        ---Line-comment keymap
+        line = 'cc',
+        ---Block-comment keymap
+        block = 'gbc',
+    },
+    ---Enable keybindings
+    ---NOTE: If given `false` then the plugin won't create any mappings
+    mappings = {
+        ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+        basic = true,
+        ---Extra mapping; `gco`, `gcO`, `gcA`
+        extra = false,
+    },
+})
 
 require("catppuccin").setup({
     flavour = "frappe", -- latte, frappe, macchiato, mocha
@@ -295,8 +315,14 @@ local opts = {silent = true, nowait = true}
 
 vim.keymap.set('n', '<leader>o', ':CocOutline<CR>')
 
+-- vim.keymap.set('n', '<C-k>', ':tab split<CR>')
+-- vim.keymap.set('n', '<C-l>', ':tabn<CR>')
+-- vim.keymap.set('n', '<C-h>', ':tabp<CR>')
+-- vim.keymap.set('n', '<C-x>', ':q<CR>')
 vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts)
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>', opts)
+-- vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>', opts)
+-- vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>', opts)
 vim.keymap.set('n', '<C-x>', '<Cmd>BufferClose<CR>', opts)
 
 
@@ -309,6 +335,7 @@ vim.keymap.set('n', '<leader>m', telescope.marks, {})
 vim.keymap.set('n', '<C-q>', ':CocCommand clangd.switchSourceHeader<CR>')
 vim.keymap.set('n', '<leader>q', ':CocCommand editor.action.formatDocument<CR>')
 vim.keymap.set('n', '<F4>', ':CocCommand document.toggleInlayHint<CR>')
+vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
 
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection

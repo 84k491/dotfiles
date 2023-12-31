@@ -25,3 +25,6 @@ ask_and_copy ./tmux.conf ~/.tmux.conf
 ask_and_copy ./nvim_config/init.vim ~/.config/nvim/init.vim
 ask_and_copy ./nvim_config/config.lua ~/.config/nvim/lua/config.lua
 ask_and_copy ./nvim_config/plugins.lua ~/.config/nvim/lua/plugins.lua
+
+ask_and_copy config.fish ~/.config/fish/config.fish
+ask_and_copy starship.toml ~/.config/starship.toml
