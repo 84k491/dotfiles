@@ -61,4 +61,9 @@ use {
     }
 }
 
+local use_codeium = true
+if use_codeium then
+    use 'Exafunction/codeium.vim'
+end
+
 end)
