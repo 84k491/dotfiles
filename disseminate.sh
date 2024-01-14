@@ -13,7 +13,8 @@ ask_and_copy() {
 
     if [ $do_continue = true ];
     then
-        echo "Copying $1 -> $2"
+        #echo "Copying $1 -> $2"
+        cp $1 $2 -v
     fi
 }
 
