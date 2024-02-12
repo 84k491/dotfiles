@@ -68,6 +68,22 @@ require("lazy").setup({
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
     },
+
     'Exafunction/codeium.vim',
+
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function () 
+          local configs = require("nvim-treesitter.configs")
+
+          configs.setup({
+              ensure_installed = { "c", "cpp", "lua", "vim", "bash"},
+              sync_install = false,
+              highlight = { enable = true },
+              indent = { enable = true },  
+            })
+        end
+    },
 
 })
