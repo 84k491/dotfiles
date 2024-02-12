@@ -19,7 +19,7 @@ ask_and_copy() {
 }
 
 ask_and_copy ./bashrc ~/.bashrc
-ask_and_copy ./alacritty.yml ~/.config/alacritty/alacritty.yml
+ask_and_copy ./alacritty.toml ~/.config/alacritty/alacritty.toml
 ask_and_copy ./tmux.conf ~/.tmux.conf
 
 ask_and_copy ./nvim_config/init.lua ~/.config/nvim/init.lua

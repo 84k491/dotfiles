@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cp ~/.bashrc ./bashrc
-cp ~/.config/alacritty/alacritty.yml ./alacritty.yml
+cp ~/.config/alacritty/alacritty.toml ./alacritty.toml
 cp ~/.tmux.conf ./tmux.conf
 
 cp ~/.config/nvim/init.lua ./nvim_config/
