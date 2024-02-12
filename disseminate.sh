@@ -13,19 +13,18 @@ ask_and_copy() {
 
     if [ $do_continue = true ];
     then
-        #echo "Copying $1 -> $2"
+        mkdir -p $(dirname $2)
         cp $1 $2 -v
     fi
 }
 
-ask_and_copy ./vimrc ~/.vimrc
 ask_and_copy ./bashrc ~/.bashrc
 ask_and_copy ./alacritty.yml ~/.config/alacritty/alacritty.yml
 ask_and_copy ./tmux.conf ~/.tmux.conf
 
-ask_and_copy ./nvim_config/init.vim ~/.config/nvim/init.vim
-ask_and_copy ./nvim_config/config.lua ~/.config/nvim/lua/config.lua
-ask_and_copy ./nvim_config/plugins.lua ~/.config/nvim/lua/plugins.lua
+ask_and_copy ./nvim_config/init.lua ~/.config/nvim/init.lua
+ask_and_copy ./nvim_config/lua/config.lua ~/.config/nvim/lua/config.lua
+ask_and_copy ./nvim_config/lua/lazy_setup.lua ~/.config/nvim/lua/lazy_setup.lua
 
 ask_and_copy config.fish ~/.config/fish/config.fish
 ask_and_copy starship.toml ~/.config/starship.toml
