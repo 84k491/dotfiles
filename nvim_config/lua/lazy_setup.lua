@@ -69,21 +69,25 @@ require("lazy").setup({
         }
     },
 
-    'Exafunction/codeium.vim',
+    -- 'Exafunction/codeium.vim',
 
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function () 
+        config = function ()
           local configs = require("nvim-treesitter.configs")
 
           configs.setup({
-              ensure_installed = { "c", "cpp", "lua", "vim", "bash"},
+              ensure_installed = { "c", "cpp", "lua", "vim", "bash", "python", "rust"},
               sync_install = false,
               highlight = { enable = true },
-              indent = { enable = true },  
+              indent = { enable = true },
             })
         end
     },
 
+    { 'echasnovski/mini.nvim', version = false },
+
+    'mfussenegger/nvim-dap',
+    -- 'rcarriga/nvim-dap-ui'
 })

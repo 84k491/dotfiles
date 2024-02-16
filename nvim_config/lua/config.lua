@@ -16,6 +16,10 @@ opt.signcolumn = 'yes'
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 vim.cmd('filetype plugin indent off')
 
+require('mini.indentscope').setup()
+require('mini.cursorword').setup()
+require('mini.starter').setup()
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd[[
     augroup highlight_yank
@@ -87,7 +91,7 @@ require("catppuccin").setup({
         nvimtree = true,
         treesitter = true,
         notify = false,
-        mini = false,
+        mini = true,
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
@@ -359,3 +363,23 @@ vim.keymap.set('n', '<leader>m', ':MarksListAll<CR>')
 
 vim.keymap.set('n', '<c-g>', ':echo expand("%:p")<CR>')
 -- ====================================================================================================
+
+local dap = require("dap")
+dap.adapters.gdb = {
+  type = "executable",
+  command = "gdb",
+  args = { "-i", "dap" }
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "gdb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false,
+  },
+}
