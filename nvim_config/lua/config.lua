@@ -383,3 +383,32 @@ dap.configurations.cpp = {
     stopAtBeginningOfMainSubprogram = false,
   },
 }
+
+vim.keymap.set('n', '<M-b><M-b>', ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set('n', '<M-b><M-l>', ":lua require'dap'.list_breakpoints()<CR>")
+vim.keymap.set('n', '<M-b><M-c>', ":lua require'dap'.clear_breakpoints()<CR>")
+vim.keymap.set('n', '<M-c>', ":lua require'dap'.continue()<CR>")
+vim.keymap.set('n', '<M-q>', ":lua require'dap'.terminate()<CR>")
+vim.keymap.set('n', '<M-p>', ":lua require'dap'.pause()<CR>")
+
+vim.keymap.set('n', '<M-n>', ":lua require'dap'.step_over()<CR>")
+vim.keymap.set('n', '<M-i>', ":lua require'dap'.step_into()<CR>")
+vim.keymap.set('n', '<M-o>', ":lua require'dap'.step_out()<CR>")
+vim.keymap.set('n', '<M-a>', ":lua require'dap'.run_to_cursor()<CR>")
+
+vim.keymap.set('n', '<M-u>', ":lua require'dap'.up()<CR>")
+vim.keymap.set('n', '<M-d>', ":lua require'dap'.down()<CR>")
+
+vim.keymap.set('n', '<M-r>', ":lua require'dap'.repl.toggle()<CR>")
+vim.keymap.set('n', '<M-f>', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.frames)
+    end)
+vim.keymap.set('n', '<M-t>', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.threads)
+    end)
+vim.keymap.set('n', '<M-s>', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.scopes)
+    end)
