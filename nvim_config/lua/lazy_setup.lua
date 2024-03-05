@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "catppuccin/nvim", as = "catppuccin" },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
 
 	{
 	  'nvim-lualine/lualine.nvim',

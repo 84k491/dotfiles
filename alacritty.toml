@@ -1,4 +1,4 @@
-import = ["/home/user/.config/alacritty/catppuccin/catppuccin-frappe.toml"]
+import = ["/home/user/.config/alacritty/alacritty-theme/themes/gruvbox_light.toml"]
 
 [bell]
 animation = "Linear"
@@ -15,19 +15,19 @@ TERM = "xterm-256color"
 size = 14.0
 
 [font.bold]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrains Mono NL"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrains Mono NL"
 style = "Bold Italic"
 
 [font.italic]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrains Mono NL"
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrains Mono NL"
 style = "Regular"
 
 [font.offset]
