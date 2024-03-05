@@ -1,4 +1,4 @@
-import = ["/home/bakar/.config/alacritty/catppuccin/catppuccin-frappe.toml"]
+import = ["/home/user/.config/alacritty/catppuccin/catppuccin-frappe.toml"]
 
 [bell]
 animation = "Linear"
