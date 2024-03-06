@@ -11,7 +11,6 @@ opt.autoindent = false
 
 opt.formatoptions=""
 opt.showcmd = true
-opt.updatetime=50
 opt.signcolumn = 'yes'
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 vim.cmd('filetype plugin indent off')
@@ -52,51 +51,6 @@ require('Comment').setup({
     },
 })
 
--- require("catppuccin").setup({
---     flavour = "frappe", -- latte, frappe, macchiato, mocha
---     background = { -- :h background
---         light = "latte",
---         dark = "mocha",
---     },
---     transparent_background = false, -- disables setting the background color.
---     show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
---     term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
---     dim_inactive = {
---         enabled = false, -- dims the background color of inactive window
---         shade = "dark",
---         percentage = 0.15, -- percentage of the shade to apply to the inactive window
---     },
---     no_italic = false, -- Force no italic
---     no_bold = false, -- Force no bold
---     no_underline = false, -- Force no underline
---     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
---         comments = { "italic" }, -- Change the style of comments
---         conditionals = { "italic" },
---         loops = {},
---         functions = {},
---         keywords = {},
---         strings = {},
---         variables = {},
---         numbers = {},
---         booleans = {},
---         properties = {},
---         types = {},
---         operators = {},
---     },
---     color_overrides = {},
---     custom_highlights = {},
---     integrations = {
---         cmp = true,
---         gitsigns = true,
---         nvimtree = true,
---         treesitter = true,
---         notify = false,
---         mini = true,
---         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
---     },
--- })
--- vim.cmd.colorscheme "catppuccin"
-
 require("gruvbox").setup({
   terminal_colors = true, -- add neovim terminal colors
   undercurl = true,
@@ -123,6 +77,8 @@ require("gruvbox").setup({
 })
 vim.o.background = "light" -- or "light" for light mode
 vim.cmd("colorscheme gruvbox")
+vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
+
 require('lualine').setup()
 
 require('gitsigns').setup {
@@ -229,8 +185,6 @@ keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 -- <C-g>u breaks current undo, please make your own choice
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
--- Use <c-j> to trigger snippets
--- keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 -- Use <c-space> to trigger completion
 keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
@@ -240,9 +194,7 @@ keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
 keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
 
 -- GoTo code navigation
-keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
--- keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
--- keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+keyset("n", "<c-]>", "<Plug>(coc-definition)", {silent = true})
 keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
 
 -- Use K to show documentation in preview window
@@ -288,21 +240,6 @@ keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
 -- keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 -- keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 
--- Run the Code Lens actions on the current line
--- keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
-
--- Map function and class text objects
--- NOTE: Requires 'textDocument.documentSymbol' support from the language server
--- keyset("x", "if", "<Plug>(coc-funcobj-i)", opts)
--- keyset("o", "if", "<Plug>(coc-funcobj-i)", opts)
--- keyset("x", "af", "<Plug>(coc-funcobj-a)", opts)
--- keyset("o", "af", "<Plug>(coc-funcobj-a)", opts)
--- keyset("x", "ic", "<Plug>(coc-classobj-i)", opts)
--- keyset("o", "ic", "<Plug>(coc-classobj-i)", opts)
--- keyset("x", "ac", "<Plug>(coc-classobj-a)", opts)
--- keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
-
-
 -- Remap <C-f> and <C-b> to scroll float windows/popups
 ---@diagnostic disable-next-line: redefined-local
 local opts = {silent = true, nowait = true, expr = true}
@@ -314,22 +251,6 @@ keyset("i", "<C-b>",
        'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
 keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
 keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
-
-
--- Use CTRL-S for selections ranges
--- Requires 'textDocument/selectionRange' support of language server
--- keyset("n", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
--- keyset("x", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
-
-
--- Add `:Format` command to format current buffer
--- vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
-
--- " Add `:Fold` command to fold current buffer
--- vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
-
--- Add `:OR` command for organize imports of the current buffer
--- vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
 
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -344,10 +265,6 @@ local opts = {silent = true, nowait = true}
 
 vim.keymap.set('n', '<leader>o', ':CocOutline<CR>')
 
--- vim.keymap.set('n', '<C-k>', ':tab split<CR>')
--- vim.keymap.set('n', '<C-l>', ':tabn<CR>')
--- vim.keymap.set('n', '<C-h>', ':tabp<CR>')
--- vim.keymap.set('n', '<C-x>', ':q<CR>')
 vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts)
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>', opts)
 -- vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>', opts)
@@ -357,7 +274,7 @@ vim.keymap.set('n', '<C-x>', '<Cmd>BufferClose<CR>', opts)
 
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>e', telescope.find_files, {})
-vim.keymap.set('n', '<leader>a', telescope.live_grep, {})
+vim.keymap.set('n', '<leader>/', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>b', telescope.buffers, {})
 vim.keymap.set('n', '<leader>m', telescope.marks, {})
 
@@ -385,8 +302,6 @@ vim.keymap.set('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
 vim.keymap.set('n', '<leader>hb', '<cmd>Gitsigns blame_line<CR>')
 
 vim.keymap.set('n', '<C-t>', ':noh<CR>')
-
-vim.keymap.set('n', '<leader>m', ':MarksListAll<CR>')
 
 vim.keymap.set('n', '<c-g>', ':echo expand("%:p")<CR>')
 -- ====================================================================================================
