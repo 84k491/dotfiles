@@ -38,7 +38,7 @@ require("lazy").setup({
 
 	'lewis6991/gitsigns.nvim',
 
-	{ 'neoclide/coc.nvim',     branch = 'release' },
+	-- { 'neoclide/coc.nvim',     branch = 'release' },
 	'lervag/vimtex',
 
 	'romgrk/barbar.nvim',
@@ -79,7 +79,7 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "c", "cpp", "lua", "vim", "bash", "python", "rust" },
+				ensure_installed = { "c", "cpp", "lua", "vim", "bash", "python", "rust", "markdown" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -91,4 +91,23 @@ require("lazy").setup({
 
 	'mfussenegger/nvim-dap',
 	-- 'rcarriga/nvim-dap-ui'
+
+	'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
+	'hrsh7th/nvim-cmp', -- Autocompletion plugin
+	'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+	'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+	'L3MON4D3/LuaSnip', -- Snippets plugin
+
+	{
+		"hedyhli/outline.nvim",
+		config = function()
+			-- Example mapping to toggle outline
+			vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
+			{ desc = "Toggle Outline" })
+
+			require("outline").setup {
+			-- Your setup opts here (leave empty to use defaults)
+			}
+		end,
+	},
 })
