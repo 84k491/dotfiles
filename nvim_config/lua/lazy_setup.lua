@@ -70,7 +70,7 @@ require("lazy").setup({
 		}
 	},
 
-	-- 'Exafunction/codeium.vim',
+	'Exafunction/codeium.vim',
 
 	{
 		"nvim-treesitter/nvim-treesitter",
