@@ -70,7 +70,7 @@ require("lazy").setup({
 		}
 	},
 
-	'Exafunction/codeium.vim',
+	-- 'Exafunction/codeium.vim',
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -109,5 +109,12 @@ require("lazy").setup({
 			-- Your setup opts here (leave empty to use defaults)
 			}
 		end,
+	},
+
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+		-- options
+		},
 	},
 })

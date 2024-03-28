@@ -31,13 +31,13 @@ vim.cmd[[
 require('Comment').setup({
     toggler = {
         ---Line-comment toggle keymap
-        line = 'cc',
+        line = '<leader>;',
         ---Block-comment toggle keymap
         block = 'gbc',
     },
     opleader = {
         ---Line-comment keymap
-        line = 'cc',
+        line = '<leader>;',
         ---Block-comment keymap
         block = 'gbc',
     },
@@ -266,7 +266,7 @@ require'lspconfig'.rust_analyzer.setup{
 -- vim.keymap.set('n', 'df', vim.diagnostic.open_float)
 vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -286,11 +286,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
-    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wl', function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, opts)
+    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -321,24 +321,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    -- ['<Tab>'] = cmp.mapping(function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's' }),
-    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip.jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's' }),
   }),
   sources = {
     { name = 'nvim_lsp' },
@@ -355,8 +337,6 @@ end
 
 vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts)
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>', opts)
--- vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>', opts)
--- vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>', opts)
 vim.keymap.set('n', '<C-x>', '<Cmd>BufferClose<CR>', opts)
 
 
