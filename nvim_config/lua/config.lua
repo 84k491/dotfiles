@@ -78,6 +78,8 @@ require("gruvbox").setup({
 vim.o.background = "light" -- or "light" for light mode
 vim.cmd("colorscheme gruvbox")
 vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
+-- vim.cmd("hi! link MiniCursorword Visual")
+vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
 
 require('lualine').setup()
 
@@ -266,7 +268,6 @@ require'lspconfig'.rust_analyzer.setup{
 -- vim.keymap.set('n', 'df', vim.diagnostic.open_float)
 vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -345,6 +346,7 @@ vim.keymap.set('n', '<leader>e', telescope.find_files, {})
 vim.keymap.set('n', '<leader>/', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>b', telescope.buffers, {})
 vim.keymap.set('n', '<leader>m', telescope.marks, {})
+vim.keymap.set('n', '<leader>dd', ':Telescope diagnostics bufnr=0 layout_strategy=vertical<CR>', {})
 
 vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
 
