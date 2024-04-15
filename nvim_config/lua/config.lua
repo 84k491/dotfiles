@@ -347,6 +347,9 @@ vim.keymap.set('n', '<leader>/', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>b', telescope.buffers, {})
 vim.keymap.set('n', '<leader>m', telescope.marks, {})
 vim.keymap.set('n', '<leader>dd', ':Telescope diagnostics bufnr=0 layout_strategy=vertical<CR>', {})
+vim.keymap.set('n', '<leader>td', ':Telescope diagnostics bufnr=0 layout_strategy=vertical<CR>', {})
+vim.keymap.set('n', '<leader>tr', ':Telescope registers layout_strategy=vertical<CR>', {})
+vim.keymap.set('n', '<leader>ti', ':Telescope lsp_incoming_calls layout_strategy=vertical<CR>', {})
 
 vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
 
