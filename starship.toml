@@ -1,125 +1,125 @@
 add_newline = false
 
 [bun]
-format = "via [$symbol]($style)"
+format = ''
 
 [buf]
-format = "via [$symbol]($style)"
+format = ''
 
 [cmake]
 symbol = " "
-format = "via [$symbol]($style)"
+format = ''
 
 [cobol]
-format = "via [$symbol]($style)"
+format = ''
 
 [crystal]
-format = "via [$symbol]($style)"
+format = ''
 
 [daml]
-format = "via [$symbol]($style)"
+format = ''
 
 [dart]
-format = "via [$symbol]($style)"
+format = ''
 
 [deno]
-format = "via [$symbol]($style)"
+format = ''
 
 [dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
+format = ''
 
 [elixir]
-format = 'via [$symbol]($style)'
+format = ''
 
 [elm]
-format = 'via [$symbol]($style)'
+format = ''
 
 [erlang]
-format = 'via [$symbol]($style)'
+format = ''
 
 [fennel]
-format = 'via [$symbol]($style)'
+format = ''
 
 [golang]
-format = 'via [$symbol]($style)'
+format = ''
 
 [gradle]
-format = 'via [$symbol]($style)'
+format = ''
 
 [haxe]
-format = 'via [$symbol]($style)'
+format = ''
 
 [helm]
-format = 'via [$symbol]($style)'
+format = ''
 
 [java]
-format = 'via [$symbol]($style)'
+format = ''
 
 [julia]
-format = 'via [$symbol]($style)'
+format = ''
 
 [kotlin]
-format = 'via [$symbol]($style)'
+format = ''
 
 [lua]
-format = 'via [$symbol]($style)'
+format = ''
 
 [meson]
-format = 'via [$symbol]($style)'
+format = ''
 
 [nim]
-format = 'via [$symbol]($style)'
+format = ''
 
 [nodejs]
-format = 'via [$symbol]($style)'
+format = ''
 
 [ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
+format = ''
 
 [opa]
-format = 'via [$symbol]($style)'
+format = ''
 
 [perl]
-format = 'via [$symbol]($style)'
+format = ''
 
 [php]
-format = 'via [$symbol]($style)'
+format = ''
 
 [pulumi]
-format = 'via [$symbol$stack]($style)'
+format = ''
 
 [purescript]
-format = 'via [$symbol]($style)'
+format = ''
 
 [python]
-format = 'via [$symbol]($style)'
+format = ''
 
 [raku]
-format = 'via [$symbol]($style)'
+format = ''
 
 [red]
-format = 'via [$symbol]($style)'
+format = ''
 
 [rlang]
-format = 'via [$symbol]($style)'
+format = ''
 
 [ruby]
-format = 'via [$symbol]($style)'
+format = ''
 
 [rust]
-format = 'via [$symbol]($style)'
+format = ''
 
 [solidity]
-format = 'via [$symbol]($style)'
+format = ''
 
 [swift]
-format = 'via [$symbol]($style)'
+format = ''
 
 [vagrant]
-format = 'via [$symbol]($style)'
+format = ''
 
 [vlang]
-format = 'via [$symbol]($style)'
+format = ''
 
 [zig]
-format = 'via [$symbol]($style)'
+format = ''

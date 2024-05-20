@@ -81,12 +81,13 @@ vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
 -- vim.cmd("hi! link MiniCursorword Visual")
 vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
 
+
 require('lualine').setup()
 
 require('gitsigns').setup {
   signs = {
-    add          = { text = '│' },
-    change       = { text = '│' },
+    add          = { text = ' ' },
+    change       = { text = ' ' },
     delete       = { text = '_' },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
@@ -123,6 +124,11 @@ require('gitsigns').setup {
   yadm = {
     enable = false
   },
+
+  vim.api.nvim_set_hl(0, "GitSignsAdd", { link = "GitSignsAddLn" }),
+  vim.api.nvim_set_hl(0, "GitSignsDelete", { link = "GitSignsDeleteVirtLn" }),
+  vim.api.nvim_set_hl(0, 'GitSignsChange', { bg="#88bdc2" }),
+  vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "GitSignsChange" }),
 }
 
 require'marks'.setup {
@@ -253,11 +259,12 @@ require'marks'.setup {
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.clangd.setup {}
+lspconfig.bashls.setup{}
 require'lspconfig'.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
-        enable = false;
+        enable = true;
       }
     }
   }
@@ -277,7 +284,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -363,13 +370,13 @@ vim.keymap.set('', '<space><space>', function()
 end, {remap=true})
 
 local gitsigns = require('gitsigns')
-vim.keymap.set('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
-vim.keymap.set('n', '<leader>hk', '<cmd>Gitsigns prev_hunk<CR>')
-vim.keymap.set('n', '<leader>hj', '<cmd>Gitsigns next_hunk<CR>')
-vim.keymap.set('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-vim.keymap.set('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
-vim.keymap.set('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-vim.keymap.set('n', '<leader>hb', '<cmd>Gitsigns blame_line<CR>')
+vim.keymap.set('n', 'ghp', '<cmd>Gitsigns preview_hunk<CR>')
+vim.keymap.set('n', 'ghk', '<cmd>Gitsigns prev_hunk<CR>')
+vim.keymap.set('n', 'ghj', '<cmd>Gitsigns next_hunk<CR>')
+vim.keymap.set('n', 'ghs', '<cmd>Gitsigns stage_hunk<CR>')
+vim.keymap.set('n', 'ghu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+vim.keymap.set('n', 'ghr', '<cmd>Gitsigns reset_hunk<CR>')
+vim.keymap.set('n', 'ghb', '<cmd>Gitsigns blame_line<CR>')
 
 vim.keymap.set('n', '<C-t>', ':noh<CR>')
 
