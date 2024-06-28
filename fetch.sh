@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cp ~/.bashrc ./bashrc
 cp ~/.config/alacritty/alacritty.toml ./alacritty.toml
 cp ~/.tmux.conf ./tmux.conf
 

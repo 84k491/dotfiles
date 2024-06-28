@@ -18,7 +18,6 @@ ask_and_copy() {
     fi
 }
 
-ask_and_copy ./bashrc ~/.bashrc
 ask_and_copy ./alacritty.toml ~/.config/alacritty/alacritty.toml
 ask_and_copy ./tmux.conf ~/.tmux.conf
 
