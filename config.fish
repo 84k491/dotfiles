@@ -5,6 +5,7 @@ end
 set -g fish_greeting
 
 fish_add_path "$HOME/bin"
+fish_add_path "/home/user/.cargo/bin"
 set -xg EDITOR "nvim"
 
 alias gs='git status'
