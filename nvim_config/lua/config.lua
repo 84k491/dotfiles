@@ -78,7 +78,6 @@ require("gruvbox").setup({
 vim.o.background = "light" -- or "light" for light mode
 vim.cmd("colorscheme gruvbox")
 vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
--- vim.cmd("hi! link MiniCursorword Visual")
 vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
 
 
@@ -281,6 +280,7 @@ vim.keymap.set('n', '<leader>td', ':Telescope diagnostics bufnr=0 layout_strateg
 vim.keymap.set('n', '<leader>tr', ':Telescope registers layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', '<leader>ti', ':Telescope lsp_incoming_calls layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', 'gr', ':Telescope lsp_references layout_strategy=vertical<CR>', {})
+require('telescope').load_extension('dap')
 
 vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
 
@@ -316,7 +316,7 @@ dap.adapters.gdb = {
 
 dap.configurations.cpp = {
   {
-    name = "Launch",
+    name = "Launch process",
     type = "gdb",
     request = "launch",
     program = function()
@@ -324,6 +324,13 @@ dap.configurations.cpp = {
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,
+  },
+  {
+    type = "gdb",
+    request = "attach",
+    name = "Attach to a running process",
+    pid = require("dap.utils").pick_process,
+    cwd = "${workspaceFolder}",
   },
 }
 
