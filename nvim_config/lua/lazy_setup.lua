@@ -37,7 +37,6 @@ require("lazy").setup({
 
 	'lewis6991/gitsigns.nvim',
 
-	-- { 'neoclide/coc.nvim',     branch = 'release' },
 	'lervag/vimtex',
 
 	'romgrk/barbar.nvim',
@@ -90,6 +89,10 @@ require("lazy").setup({
 
 	'mfussenegger/nvim-dap',
 	-- 'rcarriga/nvim-dap-ui'
+	{
+		'stevearc/dressing.nvim',
+		opts = {},
+	},
 
 	'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
 	'hrsh7th/nvim-cmp', -- Autocompletion plugin

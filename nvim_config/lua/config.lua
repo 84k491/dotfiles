@@ -3,6 +3,7 @@ opt.cursorline = true
 opt.relativenumber = true
 opt.tabstop=4
 opt.shiftwidth=4
+opt.softtabstop = 4
 opt.expandtab = true
 
 opt.cindent = false
@@ -270,6 +271,7 @@ vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>', opts)
 vim.keymap.set('n', '<C-x>', '<Cmd>BufferClose<CR>', opts)
 
 
+require('telescope').setup{}
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>e', telescope.find_files, {})
 vim.keymap.set('n', '<leader>/', telescope.live_grep, {})
@@ -280,7 +282,6 @@ vim.keymap.set('n', '<leader>td', ':Telescope diagnostics bufnr=0 layout_strateg
 vim.keymap.set('n', '<leader>tr', ':Telescope registers layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', '<leader>ti', ':Telescope lsp_incoming_calls layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', 'gr', ':Telescope lsp_references layout_strategy=vertical<CR>', {})
-require('telescope').load_extension('dap')
 
 vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
 
@@ -320,7 +321,7 @@ dap.configurations.cpp = {
     type = "gdb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/')
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,
@@ -328,10 +329,10 @@ dap.configurations.cpp = {
   {
     type = "gdb",
     request = "attach",
-    name = "Attach to a running process",
+    name = "Attach select",
     pid = require("dap.utils").pick_process,
     cwd = "${workspaceFolder}",
-  },
+  }
 }
 
 vim.keymap.set('n', '<M-b><M-b>', ":lua require'dap'.toggle_breakpoint()<CR>")
