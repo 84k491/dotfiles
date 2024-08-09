@@ -121,4 +121,6 @@ require("lazy").setup({
 	},
 
 	'nvim-telescope/telescope-dap.nvim',
+
+	'leoluz/nvim-dap-go',
 })

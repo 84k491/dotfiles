@@ -170,6 +170,7 @@ local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.clangd.setup {}
 lspconfig.bashls.setup{}
+lspconfig.gopls.setup{}
 require'lspconfig'.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {
@@ -194,7 +195,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    vim.lsp.inlay_hint.enable(true)
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -284,6 +285,7 @@ vim.keymap.set('n', '<leader>ti', ':Telescope lsp_incoming_calls layout_strategy
 vim.keymap.set('n', 'gr', ':Telescope lsp_references layout_strategy=vertical<CR>', {})
 
 vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
+vim.keymap.set('n', '<F4>', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
 
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
@@ -335,11 +337,13 @@ dap.configurations.cpp = {
   }
 }
 
+require('dap-go').setup {}
+
 vim.keymap.set('n', '<M-b><M-b>', ":lua require'dap'.toggle_breakpoint()<CR>")
 vim.keymap.set('n', '<M-b><M-l>', ":lua require'dap'.list_breakpoints()<CR>")
 vim.keymap.set('n', '<M-b><M-c>', ":lua require'dap'.clear_breakpoints()<CR>")
 vim.keymap.set('n', '<M-c>', ":lua require'dap'.continue()<CR>")
-vim.keymap.set('n', '<M-q>', ":lua require'dap'.terminate()<CR>")
+vim.keymap.set('n', '<M-q>', ":lua require'dap'.disconnect()<CR>")
 vim.keymap.set('n', '<M-p>', ":lua require'dap'.pause()<CR>")
 
 vim.keymap.set('n', '<M-n>', ":lua require'dap'.step_over()<CR>")
