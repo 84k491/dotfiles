@@ -211,7 +211,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set({ 'n', 'v' }, '<c-a>', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>q', function()
       vim.lsp.buf.format { async = true }
     end, opts)
@@ -276,7 +276,7 @@ require('telescope').setup{}
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>e', telescope.find_files, {})
 vim.keymap.set('n', '<leader>/', telescope.live_grep, {})
-vim.keymap.set('n', '<leader>b', telescope.buffers, {})
+vim.keymap.set('n', '<c-n>', telescope.buffers, {})
 vim.keymap.set('n', '<leader>m', telescope.marks, {})
 vim.keymap.set('n', '<leader>dd', ':Telescope diagnostics bufnr=0 layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', '<leader>td', ':Telescope diagnostics bufnr=0 layout_strategy=vertical<CR>', {})
@@ -286,6 +286,8 @@ vim.keymap.set('n', 'gr', ':Telescope lsp_references layout_strategy=vertical<CR
 
 vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
 vim.keymap.set('n', '<F4>', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
+vim.keymap.set('n', '[[', '][%')
+vim.keymap.set('n', ']]', '][][%')
 
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
@@ -308,6 +310,7 @@ vim.keymap.set('n', 'ghb', '<cmd>Gitsigns blame_line<CR>')
 vim.keymap.set('n', '<C-t>', ':noh<CR>')
 
 vim.keymap.set('n', '<c-g>', ':echo expand("%:p")<CR>')
+
 -- ====================================================================================================
 
 local dap = require("dap")
@@ -336,6 +339,8 @@ dap.configurations.cpp = {
     cwd = "${workspaceFolder}",
   }
 }
+
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='red', linehl='red', numhl='red'})
 
 require('dap-go').setup {}
 
