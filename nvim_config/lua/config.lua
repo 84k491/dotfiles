@@ -202,6 +202,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, opts)
+
+    vim.keymap.set("n", "(", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", {noremap=true})
+    vim.keymap.set("n", ")", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
+
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
