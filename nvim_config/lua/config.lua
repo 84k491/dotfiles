@@ -69,7 +69,7 @@ require("gruvbox").setup({
   invert_signs = false,
   invert_tabline = false,
   invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
+  inverse = false, -- invert background for search, diffs, statuslines and errors
   contrast = "soft", -- can be "hard", "soft" or empty string
   palette_overrides = {},
   overrides = {},
@@ -80,7 +80,8 @@ vim.o.background = "light" -- or "light" for light mode
 vim.cmd("colorscheme gruvbox")
 vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
 vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
-
+vim.api.nvim_set_hl(0, 'Search', { fg="#f2e5bc", bg="#b57614"})
+vim.api.nvim_set_hl(0, 'IncSearch', { fg="#f2e5bc", bg="#961414" })
 
 require('lualine').setup()
 
