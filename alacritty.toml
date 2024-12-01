@@ -138,4 +138,4 @@ x = 6
 y = 6
 
 [general]
-import = ["~/.config/alacritty/alacritty-theme/themes/gruvbox_light.toml"]
+import = ["~/.config/alacritty/alacritty/catppuccin-frappe.toml"]

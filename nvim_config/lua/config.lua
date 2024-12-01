@@ -77,20 +77,20 @@ require("gruvbox").setup({
   transparent_mode = false,
 })
 vim.o.background = "light" -- or "light" for light mode
-vim.cmd("colorscheme gruvbox")
-vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
-vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
-vim.api.nvim_set_hl(0, 'Search', { fg="#f2e5bc", bg="#b57614"})
-vim.api.nvim_set_hl(0, 'IncSearch', { fg="#f2e5bc", bg="#961414" })
-vim.api.nvim_set_hl(0, 'OutlineCurrent', { link="Visual" })
-vim.api.nvim_set_hl(0, 'OutlineFoldMarker', { link="GruvboxBlue" })
+vim.cmd("colorscheme catppuccin-frappe")
+-- vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
+-- vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
+-- vim.api.nvim_set_hl(0, 'Search', { fg="#f2e5bc", bg="#b57614"})
+-- vim.api.nvim_set_hl(0, 'IncSearch', { fg="#f2e5bc", bg="#961414" })
+-- vim.api.nvim_set_hl(0, 'OutlineCurrent', { link="Visual" })
+-- vim.api.nvim_set_hl(0, 'OutlineFoldMarker', { link="GruvboxBlue" })
 
 require('lualine').setup()
 
 require('gitsigns').setup {
   signs = {
-    add          = { text = ' ' },
-    change       = { text = ' ' },
+    add          = { text = '|' },
+    change       = { text = '|' },
     delete       = { text = '_' },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
@@ -125,10 +125,10 @@ require('gitsigns').setup {
     col = 1
   },
 
-  vim.api.nvim_set_hl(0, "GitSignsAdd", { link = "GitSignsAddLn" }),
-  vim.api.nvim_set_hl(0, "GitSignsDelete", { link = "GitSignsDeleteVirtLn" }),
-  vim.api.nvim_set_hl(0, 'GitSignsChange', { bg="#88bdc2" }),
-  vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "GitSignsChange" }),
+  -- vim.api.nvim_set_hl(0, "GitSignsAdd", { link = "GitSignsAddLn" }),
+  -- vim.api.nvim_set_hl(0, "GitSignsDelete", { link = "GitSignsDeleteVirtLn" }),
+  -- vim.api.nvim_set_hl(0, 'GitSignsChange', { bg="#88bdc2" }),
+  -- vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "GitSignsChange" }),
 }
 
 require'marks'.setup {
