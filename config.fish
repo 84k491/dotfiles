@@ -27,4 +27,3 @@ function fish_user_key_bindings
 end
 
 source ~/.config/fish/local_conf.fish
-starship init fish | source

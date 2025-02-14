@@ -16,7 +16,7 @@ opt.signcolumn = 'yes'
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 vim.cmd('filetype plugin indent off')
 
-require('mini.indentscope').setup()
+-- require('mini.indentscope').setup()
 require('mini.cursorword').setup()
 require('mini.starter').setup()
 
@@ -168,9 +168,39 @@ require'marks'.setup {
   mappings = {}
 }
 
+require("neo-tree").setup({
+    enable_diagnostics = false,
+    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    filesystem = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+          --               -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        }
+    },
+    buffers = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+          --              -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        }
+    },
+})
+
 ------------- lsp-config ---------------------------------------------------------------------------
 local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
+require'lspconfig'.pyright.setup{
+  settings = {
+    python = {
+      analysis = {
+        diagnosticMode = "off",  -- Disable diagnostics
+      },
+    },
+  },
+  handlers = {
+    ["textDocument/publishDiagnostics"] = function() end,  -- Disable diagnostics in the client
+  },
+}
 lspconfig.clangd.setup {}
 lspconfig.bashls.setup{}
 lspconfig.gopls.setup{}
@@ -291,10 +321,12 @@ vim.keymap.set('n', '<leader>tr', ':Telescope registers layout_strategy=vertical
 vim.keymap.set('n', '<leader>ti', ':Telescope lsp_incoming_calls layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', 'gr', ':Telescope lsp_references layout_strategy=vertical<CR>', {})
 
-vim.keymap.set('n', '<F2>', ':Neotree toggle<CR>')
-vim.keymap.set('n', '<F4>', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
-vim.keymap.set('n', '[[', '][%')
-vim.keymap.set('n', ']]', '][][%')
+vim.keymap.set('n', '<F2>', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
+vim.keymap.set('n', '<F3>', ':Neotree source=buffers reveal=true position=left toggle=true action=show<CR>')
+vim.keymap.set('n', '<F4>', ':Neotree source=filesystem reveal=true position=left toggle=true action=show<CR>')
+vim.keymap.set('n', '<F5>', ':Neotree source=git_status reveal=true position=left toggle=true action=show<CR>')
+-- vim.keymap.set('n', '[[', '][%')
+-- vim.keymap.set('n', ']]', '][][%')
 
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
@@ -324,7 +356,7 @@ local dap = require("dap")
 dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
-  args = { "-i", "dap" }
+  args = { "--interpreter=dap" }
 }
 
 dap.configurations.cpp = {

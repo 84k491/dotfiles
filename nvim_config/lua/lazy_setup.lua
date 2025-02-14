@@ -77,7 +77,7 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "c", "cpp", "lua", "vim", "bash", "python", "rust", "markdown" },
+				ensure_installed = { "c", "cpp", "lua", "vim", "bash", "python", "rust", "markdown", "go" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = false },
@@ -123,6 +123,7 @@ require("lazy").setup({
 	'nvim-telescope/telescope-dap.nvim',
 
 	'leoluz/nvim-dap-go',
+	'elkowar/yuck.vim',
 
 	{
 		"rmagatti/goto-preview",
