@@ -28,7 +28,6 @@ vim.cmd[[
     augroup END
 ]]
 
---require('plugins')
 require('Comment').setup({
     toggler = {
         ---Line-comment toggle keymap
@@ -52,31 +51,31 @@ require('Comment').setup({
     },
 })
 
-require("gruvbox").setup({
-  terminal_colors = true, -- add neovim terminal colors
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = {
-    strings = true,
-    emphasis = true,
-    comments = true,
-    operators = false,
-    folds = true,
-  },
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = false, -- invert background for search, diffs, statuslines and errors
-  contrast = "soft", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {},
-  dim_inactive = false,
-  transparent_mode = false,
-})
-vim.o.background = "light" -- or "light" for light mode
+-- require("gruvbox").setup({
+--   terminal_colors = true, -- add neovim terminal colors
+--   undercurl = true,
+--   underline = true,
+--   bold = true,
+--   italic = {
+--     strings = true,
+--     emphasis = true,
+--     comments = true,
+--     operators = false,
+--     folds = true,
+--   },
+--   strikethrough = true,
+--   invert_selection = false,
+--   invert_signs = false,
+--   invert_tabline = false,
+--   invert_intend_guides = false,
+--   inverse = false, -- invert background for search, diffs, statuslines and errors
+--   contrast = "soft", -- can be "hard", "soft" or empty string
+--   palette_overrides = {},
+--   overrides = {},
+--   dim_inactive = false,
+--   transparent_mode = false,
+-- })
+-- vim.o.background = "light" -- or "light" for light mode
 vim.cmd("colorscheme catppuccin-frappe")
 -- vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = "#44aaaa", bold = true })
 -- vim.api.nvim_set_hl(0, 'MiniCursorword', { bg="#e3cea8" })
@@ -251,6 +250,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({ 'n', 'v' }, '<c-a>', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>q', function()
       vim.lsp.buf.format { async = true }
+    end, opts)
+    vim.keymap.set('v', '<leader>q', function()
+      vim.lsp.buf.format {
+        range = {
+            ['start'] = vim.api.nvim_buf_get_mark(0, '<'),
+            ['end'] = vim.api.nvim_buf_get_mark(0, '>')
+        },
+        async = true
+      }
     end, opts)
     vim.keymap.set('n', '<C-q>', ':ClangdSwitchSourceHeader<CR>')
   end,
