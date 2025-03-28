@@ -235,7 +235,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, opts)
 
-    vim.keymap.set("n", "(", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", {noremap=true})
+    -- vim.keymap.set("n", "(", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", {noremap=true})
     vim.keymap.set("n", ")", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
 
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -248,10 +248,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<c-a>', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>q', function()
+    vim.keymap.set('n', '<c-k>', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-    vim.keymap.set('v', '<leader>q', function()
+    vim.keymap.set('v', '<c-k>', function()
       vim.lsp.buf.format {
         range = {
             ['start'] = vim.api.nvim_buf_get_mark(0, '<'),
@@ -327,7 +327,7 @@ vim.keymap.set('n', '<leader>dd', ':Telescope diagnostics bufnr=0 layout_strateg
 vim.keymap.set('n', '<leader>td', ':Telescope diagnostics bufnr=0 layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', '<leader>tr', ':Telescope registers layout_strategy=vertical<CR>', {})
 vim.keymap.set('n', '<leader>ti', ':Telescope lsp_incoming_calls layout_strategy=vertical<CR>', {})
-vim.keymap.set('n', 'gr', ':Telescope lsp_references layout_strategy=vertical<CR>', {})
+vim.keymap.set('n', '(', ':Telescope lsp_references layout_strategy=vertical<CR>', {})
 
 vim.keymap.set('n', '<F2>', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
 vim.keymap.set('n', '<F3>', ':Neotree source=buffers reveal=true position=left toggle=true action=show<CR>')
